@@ -36,9 +36,7 @@ Estas son las herramientas que usaremos en el curso:
 - Prettier: Es un plugin que hace que el código se vea bien sin importar cómo esta escrito. Disponible para visual studio code
     - Si se quiere deshabilitar prettier, se ingresa a: 
 
-Configuración => Extensiones => Prettier => Editar en settings.json.  
-
-"prettier.disableLanguages": ["html"]
+Configuración => Extensiones => Prettier => Editar en settings.json.    "prettier.disableLanguages": ["html"]
 
 - React-tabs: para pestañas
 
