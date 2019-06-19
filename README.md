@@ -41,3 +41,19 @@ Configuración => Extensiones => Prettier => Editar en settings.json.    "pretti
 - React-tabs: para pestañas
 
 ## Create-react-app
+Es una app moderna que se usa desde la linea de comandos. Con esta app se establece todas las dependencias y entorno necesario para poder utilizar react en un proyecto.
+```
+$ npx create-react-app my-app
+```
+Las carpetas son:
+- src: Todo el código fuente
+
+Babel: Traduce el código nuevo a viejo. 
+Jslint: Herramienta
+
+- Instalar repo de platzi-badges
+```
+$ git clone https://github.com/Sparragus/platzi-badges.git
+$ npm install
+$ npm run start
+```
