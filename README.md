@@ -80,9 +80,10 @@ We suggest that you begin by typing:
   npm start
 
 Happy hacking!
-```
 
-## ReactDOM
+## ReactDOM RENDER
+
+```
 - Sin react 
 ```js
 const element  = document.createElement('h1');
@@ -99,9 +100,8 @@ const element = <h1>Hola Bobi</h1>; // Esto es JSX
 const container =  document.getElementById('app');
 ReactDOM.render(element,container);
 ```
-Donde **//ReactDOM.render( que renderizar, donde renderizar)
-**
-EL que renderizar es el emento que contiene un elemento html, y el donde es a que elemento se le agregará.
+Donde **//ReactDOM.render( que renderizar, donde renderizar)**
+EL que renderizar es el elemento que contiene un elemento html, y el donde es a que elemento se le agregará.
 
 ## JSX
 JSX es una extensión de JavaScript creada por Facebook para el uso con la biblioteca React. Sirve de preprocesador (como Sass o Stylus a CSS) y transforma el código generado con React a JavaScript.
@@ -114,7 +114,24 @@ El tipo de elemento que estamos creando
 sus atributos o props
 y el children que es el contenido.
 Ejemplo:
+```js
 React.createElement(‘a’, { href: ‘https://platzi.com’ }, ‘Ir a Platzi’);
+
+const element = React.createElement(
+    'a',
+    { href:'https://platzi.com'},
+    'HOla soy el children'
+);
+
+var name = 'LEO';
+const element2 = React.createElement(
+    'h1',
+    {},
+    `HOlaaa ${name}`
+);
+```
+
+
 
 En JSX se utilizan las llaves para introducir variables o expresiones de Javascript. Lo que sea que esté adentro se va a evaluar y su resultado se mostrará en pantalla.
 
@@ -142,5 +159,83 @@ JSX es JS, hace lo mismo que createElement, pero más declarativo y sencillo. Am
 
 - En JSX no se muestra los valores que son falso en JS como undefined o null
 ```js
+const sum = ()=> 3+3;
 const elementJSX2 = <h1>HOla soy {name} suma:{sum()} {undefined} {null}</h1>
+```
+
+## Que es un componente
+Atomos, conjuntos -- personas.
+Los componentes son los bloques de contruccion, como legos. Estos forman las websites completas.
+
+- Componentes vs elemento: CAsa es un elemento, su componentes es el plano de construcción. Un elemento es a un objeto como un componente es a una clase. 
+En JSX si estan en brakets son elementos, sino son componentes.
+
+- Como identificar los componentes.
+    - Elementos que se repiten: Por ejemplo en la pagina de airbnb. Los elementos que se repiten son las casas. Luego cada una de estas casa listadas es un componente con una especificación. Cada componente tendrpa definido una foto, una descripción y un precio.
+    - Elementos que cumplen una función especifica: Estos sirven para encapsular la lógica y permiten juntar muchos comportamientos y aspectos visuales en un solo lugar. Por ejemplo: una barra de búsqueda al buscar los sitios.
+
+Los componentes son la unidad básica de desarrollo, al juntarlos se crean apps completas.
+
+### Escribiendo componentes.
+- Es una buena práctica que los componentes vivan en su propio archivo y para ello se les crea una carpeta.
+La carpeta se ubicará en src/componentes.
+
+- Todos los componentes requieren por lo menos el método render que define cuál será el resultado que aparecerá en pantalla.
+- El source de las imágenes en React puede contener direcciones en la web o se le puede hacer una referencia directa importándola. Si se importa deben usarse llaves para que sea evaluado.
+
+- Un componente básico tiene:
+```js
+import React from 'react';
+
+class Badge extends React.Component{
+  render() {
+    return(
+      <h1>Badges</h1>
+    )
+  }
+}
+
+export default Badge;
+```
+Se observa que cada componente debe importar de 'react'. Debe conteer el método *render()* el cuál retorna componentes HTML con jsx. Siempre al final debe exportarse el componente, el cuál es definido con una clase que es heredada de React.Component
+
+Luego para agregar el componente en mi página principal.
+```js
+import Badge from './components/Badge'
+const container =  document.getElementById('app');
+ReactDOM.render(<Badge/>,container);
+```
+Es importante siempre al reactDom darle un componente, por eso se usa <Componente/>
+
+
+
+
+
+
+
+
+```js```
+```js```
+```js```
+```js```
+```js```
+```js```
+```js```
+
+-------------------------------------------------------------------
+-- PAQUETES INSTALADOS
+https://material-theme.site/
+https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-
+https://marketplace.visualstudio.com/items?itemName=ionutvmi.path-autocomplete
+https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense
+https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=es
+- Se agrega al settings.json de vscode
+```js
+"emmet.syntaxProfiles": {
+        "javascript":"jsx"
+},
+"emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+},
+"emmet.triggerExpansionOnTab": true
 ```
