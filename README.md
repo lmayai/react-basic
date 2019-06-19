@@ -67,4 +67,65 @@ We suggest that you begin by typing:
 Happy hacking!
 ```
 
-## 
+## ReactDOM
+- Sin react 
+```js
+const element  = document.createElement('h1');
+element.innerText = 'Hola PLATZIII';
+const container = document.getElementById('app');
+container.appendChild(element);
+```
+
+Para agregar y quitar elementos de react hacía la vista se hace lo siguiente
+```js
+import React from 'react';   //analago a createElement
+import ReactDOM from 'react-dom'; //analogo a appenChild
+const element = <h1>Hola Bobi</h1>; // Esto es JSX
+const container =  document.getElementById('app');
+ReactDOM.render(element,container);
+```
+Donde **//ReactDOM.render( que renderizar, donde renderizar)
+**
+EL que renderizar es el emento que contiene un elemento html, y el donde es a que elemento se le agregará.
+
+## JSX
+JSX es una extensión de JavaScript creada por Facebook para el uso con la biblioteca React. Sirve de preprocesador (como Sass o Stylus a CSS) y transforma el código generado con React a JavaScript.
+
+JSX tiene su alternativa que es React.createElement pero es preferible JSX porque es mucho más legible y expresivo. Ambos tienen el mismo poder y la misma capacidad.
+
+React.createElement recibe 3 argumentos:
+
+El tipo de elemento que estamos creando
+sus atributos o props
+y el children que es el contenido.
+Ejemplo:
+React.createElement(‘a’, { href: ‘https://platzi.com’ }, ‘Ir a Platzi’);
+
+En JSX se utilizan las llaves para introducir variables o expresiones de Javascript. Lo que sea que esté adentro se va a evaluar y su resultado se mostrará en pantalla.
+
+Las expresiones pueden ser llamadas a otras funciones, cálculos matemáticos, etc. Si las expresiones son false, 0, null, undefined, entre otros, no se verán.
+
+- Sin usar JSX seria:
+```js
+const element = React.createElement(
+    'div',
+    {},
+    React.createElement('h1',{},'HOla soy LEO'),
+    React.createElement('p',{},'Soy ingeniero')
+)
+```
+- CON JSX
+```js
+const jsx = ( 
+    <div>
+        <h1>HOla soy LEO</h1>
+        <p>Soy ingeniero</p>
+    </div>
+);
+```
+JSX es JS, hace lo mismo que createElement, pero más declarativo y sencillo. Ambos tienen elmismo resultado pero es más simple JSX. JSX es lo mismo que Js, se convierte en JS usando babel react etc...
+
+- En JSX no se muestra los valores que son falso en JS como undefined o null
+```js
+const elementJSX2 = <h1>HOla soy {name} suma:{sum()} {undefined} {null}</h1>
+```
