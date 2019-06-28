@@ -207,17 +207,25 @@ ReactDOM.render(<Badge/>,container);
 ```
 Es importante siempre al reactDom darle un componente, por eso se usa <Componente/>
 
-
-
-
-
-
-
-
-```js```
-```js```
-```js```
-```js```
+### Estilos
+Dentro de /componentees  se crea una carpeta styles, donde se guardaran los estilos.
+-  Para agregar un estilo a un componente se hace:
+```js
+// En Badge.js
+import './styles/Badge.css'
+```
+Ahora se le deben poner las clases de los estilos. Debe usarse **className** no **class**
+```js
+<div className="Badge">
+```
+- Para usar bootstrap
+```
+npm install bootstrap
+```
+Para importar bootstrap en index.js
+```js
+import 'bootstrap/dist/css/bootstrap.css'
+```
 ```js```
 ```js```
 ```js```
