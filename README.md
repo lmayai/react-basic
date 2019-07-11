@@ -230,6 +230,25 @@ import 'bootstrap/dist/css/bootstrap.css'
 ```js```
 ```js```
 
+### Props
+Los props. son los argumentos a una función, lo que serián los atributos a los componentes como class, src, etc.
+Estos props salen de una variable de la clase que se llama this.props y los valores son asignados directamente en el ReactDOM.render().
+- Los props se envian desde el render hacía el componentes
+```js
+// En index.js
+ReactDOM.render(<Badge firstName='Richard' lastName='Buble' />,container);
+```
+- Luego para usarlo en el componente se usa ***this.props***
+```js
+// En Badge.js
+<h1>{this.props.firstName} <br/> {this.props.lastName}</h1>
+```
+Por tal se enviaron 2 propiedades, las cuales son *firstName* y *lastName*. Estas se leen con this.props
+
+
+
+
+
 -------------------------------------------------------------------
 -- PAQUETES INSTALADOS
 https://material-theme.site/
