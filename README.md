@@ -245,6 +245,20 @@ ReactDOM.render(<Badge firstName='Richard' lastName='Buble' />,container);
 ```
 Por tal se enviaron 2 propiedades, las cuales son *firstName* y *lastName*. Estas se leen con this.props
 
+### Páginas
+Las páginas son como componentes, con la diferencia que es un componente con otros componentes adentro.
+- Al escribir los props no importa el orden en el que lo hagas, únicamente importa el nombre.
+
+Por ejemplo una página puede renderizar a más de un componente. Por ejempo en *BadgeNew.css* Donde luego este BadgeNew es renderizado por el index.
+
+
+
+
+
+
+
+
+
 
 
 
