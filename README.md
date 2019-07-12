@@ -251,14 +251,38 @@ Las páginas son como componentes, con la diferencia que es un componente con ot
 
 Por ejemplo una página puede renderizar a más de un componente. Por ejempo en *BadgeNew.css* Donde luego este BadgeNew es renderizado por el index.
 
+### Eventos
+- React dispone de eventos. Cada vez que se recibe información en un input se obtiene un evento onChange y se maneja con un método de la clase this.handleChange
+- Los elementos button también tienen un evento que es onClick.
+- Cuando hay un botón dentro de un formulario, este automáticamente será de tipo submit. Si no queremos que pase así hay dos maneras de evitarlo: especificando que su valor es de tipo button o manejándolo desde el formulario cuando ocurre el evento onSubmit
 
-
-
-
-
-
-
-
+Dentro del componente, un método se usarpa para manejar los eventos
+```js
+handleChange = (event) => {
+    console.log({
+      value: event.target.value,
+      name: event.target.name,
+    });
+}
+```
+Se coloca donde se quiere manejar el evento onChange
+```js
+<input onChange={this.handleChange} className="form-control" type="text" name="" id=""/>
+```
+Cuando hay un botón dentro de un formulario, es de tipo submit, se puede:
+- Hacer el boton que no sea de tipo submit
+```js
+//Especificar que es de tipo button
+<button onClick={this.handleClick} className="btn btn-primary">Save</button>
+```
+- O se puede agregar al evento del submit el preventDeafault() para que no se recargue.
+```js
+handleSubmit = (event) => {
+  event.preventDefault();
+}
+. . . 
+<form onSubmit={this.handleSubmit}>
+```
 
 
 
