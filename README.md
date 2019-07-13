@@ -284,6 +284,58 @@ handleSubmit = (event) => {
 <form onSubmit={this.handleSubmit}>
 ```
 
+### Masnejo de estados
+Hasta esta clase todos los componentes han obtenido su información a través de props que vienen desde afuera (otros componentes) pero hay otra manera en la que los componentes pueden producir su propia información y guardarla para ser consumida o pasada a otros componentes a través de sus props. La clave está en que la información del state a otros componentes pasará en una sola dirección y podrá ser consumida pero no modificada.
+
+Para guardar la información en el estado se usa una función de la clase component llamada setState a la cual se le debe pasar un objeto con la información que se quiere guardar.
+
+Aunque no se ve, la información está siendo guardada en dos sitios. Cada input guarda su propio valor y al tiempo la está guardando en setState, lo cual no es ideal. Para solucionarlo hay que modificar los inputs de un estado de no controlados a controlados.
+
+- Para almacenar la informacion se usa setState, el cual guarda un objeto así: Desde el handleChange.
+```js
+this.setState({
+  popiedad : event.target.value,
+})
+```
+- Debido a que se hace una copia del elemento, lo que hace pasar los inputs de no controlados a controlados, al setear el this.state para leerlo.
+```js
+this.setState({
+  [event.target.name]: event.target.value,
+})
+. . .
+<div className="form-group">
+  <label htmlFor="">First Name</label>
+  <input 
+    onChange={this.handleChange} 
+    className="form-control" 
+    type="text" 
+    name="firstName" 
+    value={this.state.firstName}/>
+</div>
+```
+- Para no obtener un error es necesario inicializar el *state* así dentro del component.
+```js
+class BadgeForm extends React.Component {
+  state = {
+    jobTitle: 'Designer',
+  };
+  . . . 
+}
+```
+En el anterior solo se inicializa la propiedad firstName
+
+- Al enviar el formulario se puede observar la información enviada en el evento del botón:
+```js
+handleSubmit = (event) => {
+  console.log('Button submitted');
+  event.preventDefault();
+  console.log(this.state)
+}
+```
+Resumen:El *state* se uso para almacenar toda la información enviada con el formulario. Con el *setState* se guardó la información la cual fue enviada con el manejador de eventos *onChange*
+
+
+
 
 
 
