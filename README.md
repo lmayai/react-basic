@@ -334,9 +334,81 @@ handleSubmit = (event) => {
 ```
 Resumen:El *state* se uso para almacenar toda la información enviada con el formulario. Con el *setState* se guardó la información la cual fue enviada con el manejador de eventos *onChange*
 
+### Levantamiento del estado
+Levantar el estado es una técnica de React que pone el estado en una localización donde se le pueda pasar como props a los componentes. Lo ideal es poner el estado en el lugar más cercano a todos los componentes que quieren compartir esa información.
 
+Algo interesante que le da el nombre a React es su parte de “reactivo” ya que cada vez que hay un cambio en el estado o en los props que recibe un componente se vuelve a renderizar todo el componente y todos sus descendientes.
 
+- Esto es una técnica necesaria para poder compartir el state de los componentes. Si se quiere compartir desde el BadgeForm(hijo) al BadgeNew(Padre).
+Primero se incializa el *state* y el *handleChange* desde el padre
+```js
+state = {form:{}}
 
+handleChange = e => {
+  this.setState({
+    form: {
+      [e.target.name]:e.target.value,
+    },
+  });
+}
+```
+Luego el onChange se refiere al componente, donde se pasa como parámetro hacía el componente:
+```js
+<BadgeForm
+  onChange = {this.handleChange}
+/>
+```
+Por tal si cambia dentro del componente, cambia en el padre.
+- Luego en el hijo ya se refiere el onChange con props.
+```js
+<div className="form-group">
+  <label htmlFor="">First Name</label>
+  <input 
+    onChange={this.props.onChange} 
+    className="form-control" 
+    type="text" 
+    name="firstName" 
+    value={this.state.firstName}/>
+</div>
+```
+- Para evitar que siempre que se cambia un input se sobreescriba el form, se debe hacer una copia del form en el padre. O también se puede hacer una concatenación del form. Para esto seusa un spread operator.
+```js
+  handleChange = e => {
+    this.setState({
+      form: {
+        ...this.state.form,
+        [e.target.name]:e.target.value,
+      },
+    });
+  }
+```
+- Lo siguiente es tomar los valores del form, enviandolo del padre al hijo
+```js
+<BadgeForm
+  onChange = {this.handleChange}
+  formValues = {this.state.form}
+/>
+```
+- Y desde el hijo se leen así:
+```js
+<div className="form-group">
+  <label htmlFor="">First Name</label>
+  <input 
+    onChange={this.props.onChange} 
+    className="form-control" 
+    type="text" 
+    name="firstName" 
+    value={this.props.formValues.firstName}/>
+</div>
+```
+Para evitar el warning en consola
+*index.js:1446 Warning: A component is changing an uncontrolled input of type text to be controlled* Se debe incializar cada uno de los values
+```js
+
+```
+```js```
+```js```
+```js```
 
 
 -------------------------------------------------------------------
