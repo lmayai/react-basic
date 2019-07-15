@@ -485,7 +485,7 @@ Donde: BrowseRouter es el elemnto con las rutas. Switch permite que a la primera
 ```
 Se puede apreciar que la página luego de presionar el botón no carga completamente, sino parcialmente. Lo cuál mejora la experiencia de usuario. Esto es una SPA(single page app)
 
-### Uso del LAyaout
+### Uso del Layout
 - React.Fragment es la herramienta que te ayudará a renderizar varios componentes y/o elementos sin necesidad de colocar un div o cualquier otro elemento de HTML para renderizar sus hijos. Al usar esta característica de React podremos renderizar un código más limpio y legible, ya que ``React.Fragment` no se renderiza en el navegador.
 
 - El 404 es la ruta que se renderizará cuando ninguna otra coincida con la dirección ingresada.
@@ -499,7 +499,63 @@ import { Redirect, Route } from "react-router-dom";
 ```
 Como podemos observar llamamos a nuestro componente 404 y luego utilizamos Redirect, el cual es un componente de React Router para hacer redirecciones; en este caso hacemos que todas las URL’s que no correspondan a alguna que hayamos declarado, sean redirigidas a MiComponente404.
 
+## Ciclo de Vida de componentes
+Cuando un componente se renderiza se dice que entra en escena, luego si cambia o recibe unos props se actualiza y cuando se cambia de ppágina se desmonta.
+
+- Montaje: Es cuando el componente se inserta en el DOM. Lo método que se llaman son: *constructor*(inicializar), *render*(preciso), *componentDidMount*(señal de que es visible).
+- Actualización: Vuelve a renderizarse. Se usan: *render*, *comoponentDidUpdate*(propsPrevios, estadoPrevio).
+- Desmontaje: Cuando el componente sale de escena. Se llama: *componentWillUnmount*.
+
+Dentro de los componentes es posible utilizar todos estos meétodos. Desde la consola se ve lo siguiente, simulando una petición asíncrona y luego abandonando la página:
+```
+Se llama al constructor
+Se llama al Render
+Se llama al ComponentDidMount
+Se llama al Render
+Se llama al ComponentDidUpdate
+{prevPops: {…}, prevState: {…}}
+{props: {…}, state: {…}}
+...
+Se llama al ComponentWillUnmount
+```
+Ahora si se deja la página antes que se complete una peticipón asíncrona, se debe hacer clearTimeout para evitar errores.
+```js
+  componentDidMount(){
+    console.log('Se llama al ComponentDidMount');
+    this.timeoutId = setTimeout(() => {
+      this.setState({...
+      });
+    }
+  }
+
+  componentWillUnmount(){
+    console.log('Se llama al ComponentWillUnmount');
+    clearTimeout(this.timeoutId);
+  }
+```
+
+
+
 ```js```
+```js```
+```js```
+```js```
+```js```
+```js```
+```js```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
