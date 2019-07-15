@@ -484,8 +484,23 @@ Donde: BrowseRouter es el elemnto con las rutas. Switch permite que a la primera
 </Link>
 ```
 Se puede apreciar que la página luego de presionar el botón no carga completamente, sino parcialmente. Lo cuál mejora la experiencia de usuario. Esto es una SPA(single page app)
+
+### Uso del LAyaout
+- React.Fragment es la herramienta que te ayudará a renderizar varios componentes y/o elementos sin necesidad de colocar un div o cualquier otro elemento de HTML para renderizar sus hijos. Al usar esta característica de React podremos renderizar un código más limpio y legible, ya que ``React.Fragment` no se renderiza en el navegador.
+
+- El 404 es la ruta que se renderizará cuando ninguna otra coincida con la dirección ingresada.
+
+Otra forma de hacer que todas tus URL’s que no existan sean redirigidas a tu componente de 404 sería de la siguiente forma:
+```js
+import { Redirect, Route } from "react-router-dom";
+
+<Route path="/404" component={MiComponente404} />
+<Redirect from="*" to="/404" />
+```
+Como podemos observar llamamos a nuestro componente 404 y luego utilizamos Redirect, el cual es un componente de React Router para hacer redirecciones; en este caso hacemos que todas las URL’s que no correspondan a alguna que hayamos declarado, sean redirigidas a MiComponente404.
+
 ```js```
-```js```
+
 
 
 -------------------------------------------------------------------
