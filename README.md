@@ -446,7 +446,44 @@ Se usan 4 componentes:
 - Switch: Dentro de Switch solamente van elementos de Route. Switch se asegura que solamente un Route se renderize.
 - Link: Toma el lugar del elemento <a>, evita que se recargue la página completamente y actualiza la URL
 
-```js```
+### División de la app en rutas.
+```
+$ npm install react-router-dom
+```
+Como es importante usar exactamente la misma versión, del package.json en “dependencies” se quita lo que está delante del 4.
+
+- Para implementar React Router, se declara un componente el cual es quién renderizar según la ruta y además es el que tiene el nivel más alto. App.js
+- Dentro de este se agregan componente de react router así:
+```js
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Badges from './../pages/Badges';  
+import BadgeNew from './../pages/BadgeNew';
+```
+- Luego en el componente se agregan las rutas así:
+```js
+function App () { 
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/badges" component={Badges} />
+        <Route exact path="/badges/new" component={BadgeNew} />
+      </Switch>
+    </BrowserRouter>
+  );
+}
+```
+Donde: BrowseRouter es el elemnto con las rutas. Switch permite que a la primera coincidencia, sea esa ruta la renderizada. Se le pone el atributo exact para que la ruta coincida completamente y no parcialmente. En component se renderiza el componente particular
+- Si se usan botones que funcionan para llevar a una página en particular, se cambia **a** por **link** así:
+```js
+<a className="btn btn-primary" href="/badges/new">
+  New Badges
+</a>
+// Por esto
+<Link className="btn btn-primary" to="/badges/new">
+  New Badges
+</Link>
+```
+Se puede apreciar que la página luego de presionar el botón no carga completamente, sino parcialmente. Lo cuál mejora la experiencia de usuario. Esto es una SPA(single page app)
 ```js```
 ```js```
 
