@@ -518,7 +518,7 @@ Se llama al ComponentDidUpdate
 ...
 Se llama al ComponentWillUnmount
 ```
-Ahora si se deja la página antes que se complete una peticipón asíncrona, se debe hacer clearTimeout para evitar errores.
+Ahora si se deja la página antes que se complete una petición asíncrona, se debe hacer clearTimeout para evitar errores.
 ```js
   componentDidMount(){
     console.log('Se llama al ComponentDidMount');
@@ -534,6 +534,14 @@ Ahora si se deja la página antes que se complete una peticipón asíncrona, se 
   }
 ```
 
+## Llamadas a una API
+Tiene 3 estados:
+- Loading: Cuando se envía y se espera la petición
+- Error: Se deja un mensaje al usuario para arreglar el error o volver a intentarlo. Error 404: datos que no existen.
+- Data: Llegan de 2 formas, o con error(vacio) o con los datos requeridos.
+
+### Ejemplo: https://rickandmortyapi.com/
+- https://rickandmortyapi.com/api/character/
 
 
 ```js```
