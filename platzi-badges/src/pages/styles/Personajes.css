@@ -11,16 +11,16 @@
   margin: 0;
 }
 
-ul {
+.RickMortyList {
   list-style: none;
 }
 
-li{
+.RickMortyList li{
   width: 20%;
   padding: 0 0;
 }
 
-li img{
+.RickMortyList li img{
   width: 90%;
   padding: 0;
 }

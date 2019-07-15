@@ -53,7 +53,7 @@ class Personajes extends React.Component{
           <div className="RickMorty">
             <img src={LogoRickMorty} alt=""/>
 
-            <ul className="row">
+            <ul className="row RickMortyList">
               {
                 this.state.data.results.map( (character) => {
                   return(

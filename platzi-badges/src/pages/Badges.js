@@ -10,11 +10,13 @@ class Badges extends React.Component {
     super(props);
     console.log('Se llama al constructor');
     this.state = {
+      loading: true,
+      error: null,
       data: [],
     };
   }
 
-  componentDidMount(){
+  /*componentDidMount(){
     console.log('Se llama al ComponentDidMount');
     this.timeoutId = setTimeout(() => {
       this.setState({
@@ -52,6 +54,31 @@ class Badges extends React.Component {
       ]
       }); 
     }, 3000);
+  }*/
+
+  componentDidMount () {
+    this.fetchData();
+  }
+
+  fetchData = () => {
+    this.setState({
+      loading: true,
+      error: null,
+    });
+
+    try {
+      const data = [];
+      this.setState({
+        loading: false,
+        data: data,
+      })
+    } catch (error) {
+      this.setState({
+        loading: false,
+        error: error,
+      })
+    }
+
   }
 
   componentDidUpdate(prevProps,prevState){
@@ -73,6 +100,11 @@ class Badges extends React.Component {
 
   render() {
     console.log('Se llama al Render');
+    
+    if(this.state.loading === true){
+      return 'Loading ...'
+    } 
+
     return ( 
       <React.Fragment>
         
