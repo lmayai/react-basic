@@ -1,0 +1,31 @@
+.BadgesList {
+  background-color: white;
+  padding: 10px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  border-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 2px;
+}
+
+.BadgesList__image {
+  border-radius: 50%;
+}
+
+.BadgesList__info-name {
+  font-weight: 800;
+  font-size: 1.2em;
+}
+
+.BadgesList__info-twitter {
+  font-weight: 400;
+  font-size: 1.1em;
+  color: blue;
+}
+
+.BadgesList__info-jobTitle {
+  font-weight: 400;
+  font-size: 1em;
+}

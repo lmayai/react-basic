@@ -404,8 +404,48 @@ Por tal si cambia dentro del componente, cambia en el padre.
 Para evitar el warning en consola
 *index.js:1446 Warning: A component is changing an uncontrolled input of type text to be controlled* Se debe incializar cada uno de los values
 ```js
-
+state = {
+  form: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    jobTitle: "",
+    twitter: ""
+  }
+};
 ```
+
+### Listas
+La implementación de una lista sería usando *map*:
+```js
+<div className="list-unstyled">
+  {this.props.badges.map( (badge) => {
+    return (
+      <li key={badge.id} >
+      </li>
+    )
+  })}
+</div>
+```
+Siempre en las listas es importante usar el atributo key, que defina que el elemento es único.
+
+### PAra usar fontawesome con react
+https://github.com/FortAwesome/react-fontawesome
+
+## React Router
+LAs apps en react, son frecuentemente *Single web app(SPA)*.
+Con react router(open source) es posible trabajar SPA
+
+Multi Page Apps: Cada página implica una petición al servidor. La respuesta usualmente tiene todo el contenido de la página. Por cada peticion se obtiene todos los datos.
+
+Single Page Apps (SPA): Aplicaciones que cargan una sola página de HTML y cualquier actualización la hacen re-escribiendo el HTML que ya tenían. No necesita pedir todos los datos, sino solo los necesarios.
+
+Se usan 4 componentes:
+- BrowserRouter: es un componente que debe estar siempre lo más arriba de la aplicación. Todo lo que esté adentro funcionará como una SPA.
+- Route: Cuando hay un match con el path, se hace render del component. El component va a recibir tres props: match, history, location.
+- Switch: Dentro de Switch solamente van elementos de Route. Switch se asegura que solamente un Route se renderize.
+- Link: Toma el lugar del elemento <a>, evita que se recargue la página completamente y actualiza la URL
+
 ```js```
 ```js```
 ```js```
