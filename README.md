@@ -543,10 +543,67 @@ Tiene 3 estados:
 ### Ejemplo: https://rickandmortyapi.com/
 - https://rickandmortyapi.com/api/character/
 
+### Peticiones tipo GET
+En el state se ponen 3 datos. Loading, error y data.
+```js
+state = {
+  loading: true,
+  error: null,
+  data: undefined,
+};
+```
+- Lo primero que debe hacer nuestro render(), ya que el dato es undefined es manejar si la app está en loading
+```js
+if(this.state.loading === true){
+  return 'Loading ...'
+}
+```
+- Siempre las peticiones se deben hacer en el componentDidMount.
+```js
+componentDidMount () {
+  this.fetchData();
+}
 
-```js```
-```js```
-```js```
+fetchData = async () => {
+  this.setState({
+    loading: true,
+    error: null,
+  });
+
+  try{
+    data = await fetch('url')
+    //peticion se toma la data
+    // Loading en false
+  }catch(error){
+    //error, 
+    // loading en false
+  }
+}
+```
+- Luego en el método render se debe verificar que exista un error y que además los datos no estén vacios.
+```js
+if(this.state.error){
+  return(
+    <div>
+      <h2>Ha ocurrido un error: {this.state.error.message}</h2>
+    </div>
+  )
+}
+
+if( this.state.data.length === 0){
+  return(
+    <div>
+      <h3>No se encontró ningún badge</h3>
+      <Link to='/badges/new' className="btn btn-primary">Agregar Badges</Link>
+    </div>
+  )
+}
+```
+
+
+
+
+### Peticiones tipo POST
 ```js```
 ```js```
 ```js```

@@ -1,8 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import './styles/Badges.css';
 import confLogo from './../images/badge-header.svg';
 import BadgesList from './../components/BadgesList';
+import {Link} from 'react-router-dom';
+import api from '../api';
 
 class Badges extends React.Component {
 
@@ -60,23 +61,14 @@ class Badges extends React.Component {
     this.fetchData();
   }
 
-  fetchData = () => {
-    this.setState({
-      loading: true,
-      error: null,
-    });
+  fetchData = async () => {
+    this.setState({ loading: true, error: null });
 
     try {
-      const data = [];
-      this.setState({
-        loading: false,
-        data: data,
-      })
+      const data = await api.badges.list();
+      this.setState({ loading: false, data: data });
     } catch (error) {
-      this.setState({
-        loading: false,
-        error: error,
-      })
+      this.setState({ loading: false, error: error });
     }
 
   }
@@ -103,12 +95,28 @@ class Badges extends React.Component {
     
     if(this.state.loading === true){
       return 'Loading ...'
-    } 
+    }
+    
+    if(this.state.error){
+      return(
+        <div>
+          <h2>Ha ocurrido un error: {this.state.error.message}</h2>
+        </div>
+      )
+    }
 
+    if( this.state.data.length === 0){
+      return(
+        <div>
+          <h3>No se encontró ningún badge</h3>
+          <Link to='/badges/new' className="btn btn-primary">Agregar Badges</Link>
+        </div>
+      )
+    }
     return ( 
       <React.Fragment>
-        
-        <div className="Badges">
+      
+      <div className="Badges">
           <div className="Badges__hero">
             <div className="Badges__container">
               <img src={confLogo} alt="" className="Badges__conf-logo"/>
