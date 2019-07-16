@@ -2,6 +2,7 @@ import React from 'react';
 import './styles/BadgesList.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import Gravatar from './Gravatar';
 
 class BadgesList extends React.Component{
   render(){
@@ -12,7 +13,7 @@ class BadgesList extends React.Component{
             <li key={badge.id} >
               <div className="row BadgesList">
                 <div className="col-3">
-                  <img className="BadgesList__image" src={badge.avatarUrl} alt="AVATAR"/>
+                  <Gravatar className="BadgesList__image" email={badge.email} alt="AVATAR" />
                 </div>
                 <div className="col-9 BadgesList__info">
                   <div className="BadgesList__info-name">{badge.firstName} {badge.lastName}</div>

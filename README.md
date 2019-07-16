@@ -600,11 +600,17 @@ if( this.state.data.length === 0){
 }
 ```
 
-
-
-
 ### Peticiones tipo POST
-```js```
+MD5 es una pequeña librería a la cual se le da un texto y ella regresa un hash.
+
+Podremos hacer pruebas para cifrar nuestros textos a md5 en el siguiente sitio MD5 Online
+
+Hola Platzi = d3bfb9302fb1007c0f996b41cba2818c
+
+```
+$npm install md5
+```
+
 ```js```
 ```js```
 ```js```

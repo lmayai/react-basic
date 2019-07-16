@@ -25,8 +25,8 @@ const api = {
   badges: {
     list() {
       //return []
-      //return callApi('/badges');
-      throw new Error('Error al cargar badges');
+      return callApi('/badges');
+      //throw new Error('Error al cargar badges');
     },
     create(badge) {
       return callApi(`/badges`, {
