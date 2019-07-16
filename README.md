@@ -610,9 +610,24 @@ Hola Platzi = d3bfb9302fb1007c0f996b41cba2818c
 ```
 $npm install md5
 ```
+- Para manejar un error y usar un condicional:
+```js
+{ this.props.error &&
+  <p className="text-danger">{this.props.error.message}</p>
+}
+```
+Lo anterior significa que si existe ele error, entonces, despliega un párrafo
+- Si una petición es correcta, dentro del try-catch, es posible usar un prop de las páginas para redirigir la página con react-router.
+```js
+this.props.history.push('/badges');
+```
+De la misma manera en la que se manejan los estados cuando se solicitan datos, deben ser manejados cuando los datos son enviados.
 
-```js```
-```js```
+Existe un tiempo entre que se da clic y los datos son enviados. Ese tiempo de espera es necesario visualizarlo. Igual hay que mostrar mensajes de error cuando no funcionan las cosas.
+
+### Peticiones PUT
+Usadas para actualizar, incluyen un get y luego un put.
+
 ```js```
 
 
