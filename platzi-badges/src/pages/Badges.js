@@ -2,8 +2,10 @@ import React from 'react';
 import './styles/Badges.css';
 import confLogo from './../images/badge-header.svg';
 import BadgesList from './../components/BadgesList';
+import PageLoading from '../components/PageLoading';
 import {Link} from 'react-router-dom';
 import api from '../api';
+import PageError from '../components/PageError';
 
 class Badges extends React.Component {
 
@@ -94,15 +96,11 @@ class Badges extends React.Component {
     console.log('Se llama al Render');
     
     if(this.state.loading === true){
-      return 'Loading ...'
+      return <PageLoading />;
     }
     
     if(this.state.error){
-      return(
-        <div>
-          <h2>Ha ocurrido un error: {this.state.error.message}</h2>
-        </div>
-      )
+      return <PageError error= {this.state.error} />
     }
 
     if( this.state.data.length === 0){
