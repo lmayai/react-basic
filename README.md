@@ -710,10 +710,10 @@ En estos casos lo ideal será renderizar en un nodo completamente aparte y para 
 -DONDE: es donde se pondrá: document.getElementById('modal')
 
 ```js
-{ 
-  ReactDOM.createPortal(<h1>No estoy aquí</h1>, 
-  document.getElementById('modal'))
-}
+{ReactDOM.createPortal(
+  <h1>No estoy aquí</h1>, 
+  document.getElementById('modal')
+)}
 ```
 Se debe agregar al index.html undiv con id modal.
 ```js
@@ -723,8 +723,24 @@ Se debe agregar al index.html undiv con id modal.
 </body>
 ```
 
+### Modales
+La técnica de usar componentes genéricos para crear uno nuevo especializado se llama *composición* y es una herramienta que todo buen programador debe saber utilizar.
 
+La composición usa props.children, así
+```js
+<Modal isOpen={true} >LOREEEM IPSUM</Modal>
+```
+Donde al tener un componente abierto, significa que lo que se ponga en su interior se lee en el componente como props.children
+```js
+{props.children} //LOREEEM IPSUM
+```
+Revisar: BadgeDetailsContainer, el cual maneja las acciones de los botones de los modales.
+BadgeDetail: Llama al modal especifico de Delete.
+BadgeDeleteModal: LLama a modal, pero en su Children especifica todo lo que tendrá el modal.
+Modal: Toma el childre para pintar las caracteristicas internas del modal.
 
+### Hooks
+```js```
 ```js```
 ```js```
 
