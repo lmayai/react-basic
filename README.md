@@ -626,14 +626,55 @@ De la misma manera en la que se manejan los estados cuando se solicitan datos, d
 Existe un tiempo entre que se da clic y los datos son enviados. Ese tiempo de espera es necesario visualizarlo. Igual hay que mostrar mensajes de error cuando no funcionan las cosas.
 
 ### Peticiones PUT
-Usadas para actualizar, incluyen un get y luego un put.
+Usadas para actualizar(editar datos), incluyen un get y luego un put.
+- Se creo la pagina BadgeEdit.js como componente. Se puso la ruta en el react router así:
+```js
+<Route exact path="/badges/:badgeId/edit" component={BadgeEdit} />
+```
+Donde :BadgeId es referente a cada persona.
+- Como la edición va a ser enviada desde los BAdges, se pone un link con el ID desde BadgesList
+```js
+<Link className="text-reset text-decoration-none" to={`/badges/${badge.id}/edit`} >
+ // Todo lo referente al CARD
+</Link>
+```
+- Luego en el edit se hace una petición para obtener la información del personaje así:
+```js
+componentDidMount(){
+  this.fetchData();
+}
+
+fetchData = async e => {
+  this.setState({ loading: true, error: null });
+  try {
+    const data = await api.badges.read(
+      this.props.match.params.badgeId
+    );
+    this.setState({ loading: false, form: data });
+  } catch (error) {
+    this.setState({ loading: false, error: error });  
+  }
+}
+```
+Se observa que **this.props.match.params.badgeId** se puede obtener gracias al react-router, ya que en params se envía y se pueden los valores enviados al dirigirse a una ruta. Con este se obtiene el ID enviado. La información obtenida se guarda en el state.form, para poder llenar los valores a editar.
+- Luegoen la edición, cuando se haga un submit, se hace un update a la api así. Esto es asíncrono.
+```js
+handleSubmit = async e => {
+  e.preventDefault();
+  this.setState({ loading: true, error: null });
+  try {
+    await api.badges.update(this.props.match.params.badgeId, this.state.form);
+    this.setState({ loading: false });
+    this.props.history.push('/badges');
+  } catch (error) {
+    this.setState({ loading: false, error: error });
+  }
+}
+```
+
 
 ```js```
-
-
-
-
-
+```js```
 
 
 
