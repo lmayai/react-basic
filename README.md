@@ -672,7 +672,23 @@ handleSubmit = async e => {
 }
 ```
 
-
+### Actualizaciones automáticas
+*Polling* consiste en que cada cierto tiempo que es definido por nosotros se buscan los datos y se actualizan automáticamente. Esto se hará constantemente hasta que el usuario se vaya de la página.
+- Para usarlo se usa un setInterval.
+```js
+componentDidMount () {
+  this.intervalId = setInterval(this.fetchData, 5000);
+}
+```
+- Luego para evitar colapsos de memoria, se debe limpiar el intervalo. Esto se hace en el componentWillUnmount
+```js
+componentWillUnmount(){
+  clearInterval(this.intervalId);
+}
+```
+```js```
+```js```
+```js```
 ```js```
 ```js```
 

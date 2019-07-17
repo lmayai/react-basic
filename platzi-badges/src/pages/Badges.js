@@ -1,11 +1,12 @@
 import React from 'react';
 import './styles/Badges.css';
+import api from '../api';
+import {Link} from 'react-router-dom';
 import confLogo from './../images/badge-header.svg';
 import BadgesList from './../components/BadgesList';
 import PageLoading from '../components/PageLoading';
-import {Link} from 'react-router-dom';
-import api from '../api';
 import PageError from '../components/PageError';
+import MiniLoader from '../components/MiniLoader';
 
 class Badges extends React.Component {
 
@@ -61,9 +62,11 @@ class Badges extends React.Component {
 
   componentDidMount () {
     this.fetchData();
+    this.intervalId = setInterval(this.fetchData, 5000);
   }
 
   fetchData = async () => {
+    console.log('FetchData')
     this.setState({ loading: true, error: null });
 
     try {
@@ -90,12 +93,13 @@ class Badges extends React.Component {
   componentWillUnmount(){
     console.log('Se llama al ComponentWillUnmount');
     clearTimeout(this.timeoutId);
+    clearInterval(this.intervalId);
   }
 
   render() {
     console.log('Se llama al Render');
     
-    if(this.state.loading === true){
+    if(this.state.loading === true && !this.state.data){
       return <PageLoading />;
     }
     
@@ -133,6 +137,10 @@ class Badges extends React.Component {
         <div className="Badges__list">
           <div className="Badges__container">
             <BadgesList badges={this.state.data}/>
+            {
+              this.state.loading &&
+              <MiniLoader />
+            }
           </div>
         </div>
 
