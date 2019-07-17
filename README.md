@@ -686,6 +686,10 @@ componentWillUnmount(){
   clearInterval(this.intervalId);
 }
 ```
+
+## Mejorando la UI
+
+
 ```js```
 ```js```
 ```js```
