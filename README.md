@@ -689,6 +689,14 @@ componentWillUnmount(){
 
 ## Mejorando la UI
 
+### UI Components y Container Components
+En la programación es bueno separar las tareas en diferentes funciones y en React sucede lo mismo. Cuando un componente hace demasiado, probablemente es mejor dividirlo en dos.
+
+Esta técnica de componentes presentacionales y componentes container es común, útil y hace parte de las buenas prácticas.
+
+- Cuando un coponente haga 2 tareas, es conveniente dividirlo:
+BadgeDetailsContainer: Tendra la lógica
+BadgeDetails: Solo tendrá la presentacion del component.
 
 ```js```
 ```js```
