@@ -698,9 +698,33 @@ Esta técnica de componentes presentacionales y componentes container es común,
 BadgeDetailsContainer: Tendra la lógica
 BadgeDetails: Solo tendrá la presentacion del component.
 
-```js```
-```js```
-```js```
+### Portales
+Hay momentos en los que queremos renderizar un modal, un tooltip, etc. Esto puede volverse algo complicado ya sea por la presencia de un z-index o un overflow hidden.
+
+En estos casos lo ideal será renderizar en un nodo completamente aparte y para esto React tiene una herramienta llamada Portales que funcionan parecido a ReactDOM.render; se les dice qué se desea renderizar y dónde, con la diferencia de que ese dónde puede ser fuera de la aplicación.
+
+```js
+{ReactDOM.createPortal(que, donde)}
+```
+-QUE: es como <h1>Hola aqui no estoy</h1>
+-DONDE: es donde se pondrá: document.getElementById('modal')
+
+```js
+{ 
+  ReactDOM.createPortal(<h1>No estoy aquí</h1>, 
+  document.getElementById('modal'))
+}
+```
+Se debe agregar al index.html undiv con id modal.
+```js
+<body>
+  <div id="app"></div>
+  <div id="modal"></div>
+</body>
+```
+
+
+
 ```js```
 ```js```
 
