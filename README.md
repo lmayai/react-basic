@@ -740,9 +740,53 @@ BadgeDeleteModal: LLama a modal, pero en su Children especifica todo lo que tend
 Modal: Toma el childre para pintar las caracteristicas internas del modal.
 
 ### Hooks
-```js```
-```js```
-```js```
+Las funciones no tienen un estado propio que manejar como ciclos de vida a los que deben suscribirse, mientras tanto las clases sí cuentan con ello.
+
+React tiene un feature llamado Hooks que permite que las funciones también tengan features que solamente tienen las clases.
+
+Hooks: Permiten a los componentes funcionales tener características que solo las clases tienen:
+- useState: Para manejo de estado.
+- useEffect: Para suscribir el componente a su ciclo de vida.
+- useReducer: Ejecutar un efecto basado en una acción
+
+Custom Hooks: Usamos los hooks fundamentales para crear nuevos hooks custom. Estos hooks irán en su propia función y su nombre comenzará con la palabra use. Otra de sus características es que no pueden ser ejecutados condicionalmente (if).
+- useState regresa un arreglo de dos argumentos.
+
+EJM: Los hooks vienen dentro de React y pueden inicializarse. Esto retorna un 'state' y un 'setState', pero en este caso será count y setCount.
+```js
+const [ count, setCount ] = React.useState(2)
+```
+Si se quiere implementar un contador, entonces se cambia el count con setCount
+```js
+setCount(count+1)
+```
+
+Es posible hacer customHooks así
+```js
+function useIncreaseCount(max) {
+	const [ count, setCount ] = React.useState(0);
+	if (count > max) {
+		setCount(0);
+	}
+	return [ count, setCount];
+}
+```
+Y luego se llama así:
+```js
+	const [ count, setCount ] = useIncreaseCount(5);
+```
+Se observa que hará la misma función de actualizar el count pero ahpra con la condición que cuando se reinicie en 5.
+- En un botón se aumenta el contador así
+```js
+<button onClick={ () => {
+  setCount(count+1)
+}} className="btn btn-success mb-2"> Aumentar contador {count} </button>
+```
+
+### Search Filter
+
+```js
+```
 
 
 
