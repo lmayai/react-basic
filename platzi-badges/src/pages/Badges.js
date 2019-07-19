@@ -1,22 +1,21 @@
-import React from 'react';
-import './styles/Badges.css';
-import api from '../api';
-import {Link} from 'react-router-dom';
-import confLogo from './../images/badge-header.svg';
-import BadgesList from './../components/BadgesList';
-import PageLoading from '../components/PageLoading';
-import PageError from '../components/PageError';
-import MiniLoader from '../components/MiniLoader';
+import React from "react";
+import "./styles/Badges.css";
+import api from "../api";
+import { Link } from "react-router-dom";
+import confLogo from "./../images/badge-header.svg";
+import BadgesList from "./../components/BadgesList";
+import PageLoading from "../components/PageLoading";
+import PageError from "../components/PageError";
+import MiniLoader from "../components/MiniLoader";
 
 class Badges extends React.Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
-    console.log('Se llama al constructor');
+    console.log("Se llama al constructor");
     this.state = {
       loading: true,
       error: null,
-      data: [],
+      data: null
     };
   }
 
@@ -60,13 +59,13 @@ class Badges extends React.Component {
     }, 3000);
   }*/
 
-  componentDidMount () {
+  componentDidMount() {
     this.fetchData();
     this.intervalId = setInterval(this.fetchData, 5000);
   }
 
   fetchData = async () => {
-    console.log('FetchData')
+    console.log("FetchData");
     this.setState({ loading: true, error: null });
 
     try {
@@ -75,53 +74,53 @@ class Badges extends React.Component {
     } catch (error) {
       this.setState({ loading: false, error: error });
     }
+  };
 
-  }
-
-  componentDidUpdate(prevProps,prevState){
-    console.log('Se llama al ComponentDidUpdate')
+  componentDidUpdate(prevProps, prevState) {
+    console.log("Se llama al ComponentDidUpdate");
     console.log({
-      prevPops:prevProps,
-      prevState:prevState,
+      prevPops: prevProps,
+      prevState: prevState
     });
     console.log({
-      props:this.props,
-      state:this.state,
+      props: this.props,
+      state: this.state
     });
   }
 
-  componentWillUnmount(){
-    console.log('Se llama al ComponentWillUnmount');
+  componentWillUnmount() {
+    console.log("Se llama al ComponentWillUnmount");
     clearTimeout(this.timeoutId);
     clearInterval(this.intervalId);
   }
 
   render() {
-    console.log('Se llama al Render');
-    
-    if(this.state.loading === true && !this.state.data){
+    console.log("Se llama al Render", this.state);
+
+    if (this.state.loading === true && !this.state.data) {
       return <PageLoading />;
     }
-    
-    if(this.state.error){
-      return <PageError error= {this.state.error} />
+
+    if (this.state.error) {
+      return <PageError error={this.state.error} />;
     }
 
-    if( this.state.data.length === 0){
-      return(
+    if (this.state.data.length === 0) {
+      return (
         <div>
           <h3>No se encontró ningún badge</h3>
-          <Link to='/badges/new' className="btn btn-primary">Agregar Badges</Link>
+          <Link to="/badges/new" className="btn btn-primary">
+            Agregar Badges
+          </Link>
         </div>
-      )
+      );
     }
-    return ( 
+    return (
       <React.Fragment>
-      
-      <div className="Badges">
+        <div className="Badges">
           <div className="Badges__hero">
             <div className="Badges__container">
-              <img src={confLogo} alt="" className="Badges__conf-logo"/>
+              <img src={confLogo} alt="" className="Badges__conf-logo" />
             </div>
           </div>
         </div>
@@ -136,16 +135,12 @@ class Badges extends React.Component {
 
         <div className="Badges__list">
           <div className="Badges__container">
-            <BadgesList badges={this.state.data}/>
-            {
-              this.state.loading &&
-              <MiniLoader />
-            }
+            <BadgesList badges={this.state.data} />
+            {this.state.loading && <MiniLoader />}
           </div>
         </div>
-
       </React.Fragment>
-    )
+    );
   }
 }
 

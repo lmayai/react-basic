@@ -7,5 +7,12 @@
     },
     "emmet.triggerExpansionOnTab": true,
     "editor.insertSpaces": false,
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    // Set the default
+    "editor.formatOnSave": false,
+    // Enable per-language
+    "[javascript]": {
+        "editor.formatOnSave": true
+    },
+    "editor.fontLigatures": true,
 }
