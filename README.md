@@ -815,3 +815,8 @@ https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopl
 },
 "emmet.triggerExpansionOnTab": true
 ```
+
+"editor.fontLigatures": true,
+Consolas, 'Courier New', monospace
+Fira code
+https://medium.com/@bretcameron/the-2019-guide-to-beautifying-visual-studio-code-32470910fc5b
