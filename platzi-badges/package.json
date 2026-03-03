@@ -22,7 +22,7 @@
     "react-dom": "16.8.3",
     "react-fontawesome": "^1.6.1",
     "react-router-dom": "4",
-    "react-scripts": "2.1.5"
+    "react-scripts": "5.0.1"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.9.0",
